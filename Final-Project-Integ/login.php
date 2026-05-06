@@ -57,7 +57,6 @@ function showError($error){
 $errors = [
     'login' => $_SESSION['login_error'] ?? ''
 ];
-session_unset();
 ?>
 <!DOCTYPE html>
 <html lang="en">
