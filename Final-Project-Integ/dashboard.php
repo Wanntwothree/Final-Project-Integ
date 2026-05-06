@@ -31,5 +31,6 @@ $lastName  = $_SESSION['lastName'];
     </ul>
   </nav>
   <h1>Welcome, <?php echo htmlspecialchars($firstName . " " . $lastName); ?>!</h1>
+  <script src="script.js"></script>
 </body>
 </html>

@@ -11,11 +11,11 @@ function isActiveForm($formName, $activeForm) {
 }
 
 if (isset($_POST['login'])) {
-    $email = $_POST['email'];
+    $loginInput = $_POST['login_input'];
     $password = $_POST['password'];
 
-    $check = $conn->prepare("SELECT * FROM users WHERE email = ?");
-    $check->bind_param("s", $email);
+    $check = $conn->prepare("SELECT * FROM users WHERE email = ? OR username = ?");
+    $check->bind_param("ss", $loginInput, $loginInput);
     $check->execute();
     $result = $check->get_result();
 
@@ -38,13 +38,13 @@ if (isset($_POST['login'])) {
         } else {
             $_SESSION['login_error'] = "Incorrect email or password";
             $_SESSION['active_form'] = "login";
-            header("Location: index.php");
+            header("Location: login.php");
             exit();
         }
     } else {
         $_SESSION['login_error'] = "Incorrect email or password";
         $_SESSION['active_form'] = "login";
-        header("Location: index.php");
+        header("Location: login.php");
         exit();
     }
 }
@@ -72,8 +72,11 @@ session_unset();
     <div class="form-box <?php echo isActiveForm('login', $activeForm); ?>" id="login-form">
   <form action="login.php" method="post">
     <h2>Login</h2>
+        <?php if (isset($_GET['success'])): ?>
+            <p style="color: green;">Registration successful! Please log in.</p>
+        <?php endif; ?>
     <?php echo showError($errors['login']); ?>
-    <input type="email" name="email" placeholder="Email" required>
+    <input type="text" name="login_input" placeholder="Email or Username" required>
     <input type="password" name="password" placeholder="Password" required>
     <button type="submit" name="login">Login</button>
     <p>Don't have an account? <a href="register.php">Register</a></p>
@@ -81,5 +84,6 @@ session_unset();
 </div>
 
   </div>
+  <script src="script.js"></script>
 </body>
 </html>

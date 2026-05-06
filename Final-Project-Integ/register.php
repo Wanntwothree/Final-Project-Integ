@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($stmt) {
                 $stmt->bind_param("sssss", $lastName, $firstName, $email, $username, $hashedPassword);
                 if ($stmt->execute()) {
-                    header("Location: login.php");
+                    header("Location: login.php?success=1");
                     exit();
                 } else {
                     $errorMessage = 'Registration failed: ' . $stmt->error;
@@ -82,5 +82,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </div>
 
   </div>
+  <script src="script.js"></script>
 </body>
 </html>
