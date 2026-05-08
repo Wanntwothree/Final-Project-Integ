@@ -27,15 +27,15 @@ $lastName  = $_SESSION['lastName'];
     <ul>
       <li><a href="dashboard.php">Home</a></li>
       <li><a href="products.php">Products</a></li>
-      <li><a href="users.php">Users</a></li>
+      <li><a href="users.php?mode=users">Users</a></li>
       <li><a href="posts.php">Posts</a></li>
       <li><a href="logout.php">Logout</a></li>
     </ul>
   </nav>
   <h1 class="welcome-message">Welcome, <?php echo htmlspecialchars($firstName . " " . $lastName); ?>!</h1>
     <button><a href="products.php">View Products</a></button>
-    <button><a href="users.php">View Users</a></button>
-    <button><a href="carts.php">View Carts</a></button>
+    <button><a href="users.php?mode=users">View Users</a></button>
+    <button><a href="users.php?mode=carts">View Carts</a></button>
     <button><a href="posts.php">View Posts</a></button>
   <script src="script.js"></script>
 </body>
