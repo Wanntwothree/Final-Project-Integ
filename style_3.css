@@ -1,0 +1,258 @@
+/* === STYLE.CSS === */
+
+:root {
+  --bg:       #0d1117;
+  --surface:  #161b22;
+  --border:   #30363d;
+  --accent:   #f0a500;
+  --text:     #e6edf3;
+  --muted:    #8b949e;
+  --danger:   #f85149;
+  --radius:   8px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4 { color: var(--text); line-height: 1.3; }
+p { color: var(--muted); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { opacity: 0.8; }
+
+/* Navbar */
+.navbar {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar ul {
+  display: flex;
+  list-style: none;
+  height: 56px;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.navbar ul li a {
+  display: inline-block;
+  padding: 0.4rem 0.9rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  border-radius: var(--radius);
+  transition: color 0.15s, background 0.15s;
+}
+
+.navbar ul li a:hover {
+  color: var(--accent);
+  background: rgba(240,165,0,0.08);
+  opacity: 1;
+}
+
+.navbar ul li:last-child a { color: var(--danger); }
+.navbar ul li:last-child a:hover { background: rgba(248,81,73,0.1); }
+
+/* Container (login/register/index pages) */
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.container h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Form box */
+.form-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem 1.75rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+.form-box h2 {
+  margin-bottom: 1.25rem;
+  font-size: 1.4rem;
+  color: var(--accent);
+}
+
+.form-box input {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  margin-bottom: 0.75rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.form-box input:focus { border-color: var(--accent); }
+.form-box input::placeholder { color: var(--muted); }
+
+.form-box button[type="submit"] {
+  width: 100%;
+  padding: 0.75rem;
+  background: var(--accent);
+  border: none;
+  border-radius: var(--radius);
+  color: #0d1117;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  margin-top: 0.25rem;
+}
+
+.form-box button[type="submit"]:hover { opacity: 0.88; }
+
+.form-box p {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+/* Buttons */
+button {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0;
+  overflow: hidden;
+}
+
+button:hover { border-color: var(--accent); }
+
+button a, a.btn {
+  display: inline-block;
+  padding: 0.55rem 1.2rem;
+  color: var(--text);
+  font-size: 0.9rem;
+}
+
+a.btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+a.btn:hover { border-color: var(--accent); color: var(--accent); opacity: 1; }
+
+/* Button group (index page) */
+.button-group { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; }
+
+/* Dashboard */
+.welcome-message {
+  padding: 2.5rem 2rem 1rem;
+  font-size: 2rem;
+  color: var(--accent);
+}
+
+body > button { margin: 0.5rem 0.5rem 0.5rem 2rem; }
+
+/* Cards shared base */
+.product-card, .user-card, .cart-card, .post-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.25rem;
+  margin: 0.75rem 2rem;
+}
+
+.product-card, .user-card {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.product-card:hover, .user-card:hover { border-color: var(--accent); }
+
+.product-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  flex-shrink: 0;
+}
+
+.user-card img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  flex-shrink: 0;
+}
+
+.post-card { border-left: 3px solid var(--accent); }
+
+/* Tags */
+.tag {
+  display: inline-block;
+  background: rgba(240,165,0,0.1);
+  color: var(--accent);
+  border-radius: 999px;
+  padding: 0.1rem 0.6rem;
+  font-size: 0.78rem;
+  margin-right: 0.25rem;
+}
+
+/* Pagination */
+.pagination { display: flex; gap: 0.75rem; padding: 1.25rem 2rem; }
+
+/* HR */
+hr { border: none; border-top: 1px solid var(--border); margin: 0 2rem; }
+
+/* Page headings */
+body > h2 { padding: 1.75rem 2rem 0.75rem; border-bottom: 1px solid var(--border); }
+
+/* Errors */
+.error-message {
+  color: var(--danger) !important;
+  font-size: 0.88rem;
+  font-weight: 500;
+  background: rgba(248,81,73,0.08);
+  border: 1px solid rgba(248,81,73,0.3);
+  border-radius: var(--radius);
+  padding: 0.6rem 0.9rem;
+  margin-bottom: 0.9rem;
+  text-align: center;
+}
+
+.input-error { border-color: var(--danger) !important; }
+
+.error-form {
+  border: 1px solid var(--danger);
+  border-radius: var(--radius);
+  padding: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .navbar { padding: 0 1rem; overflow-x: auto; }
+  .navbar ul { white-space: nowrap; }
+  .product-card, .user-card { flex-direction: column; align-items: flex-start; }
+  .product-card, .user-card, .cart-card, .post-card { margin: 0.6rem 1rem; }
+  body > h2 { padding: 1.25rem 1rem 0.6rem; }
+  .pagination, hr { margin-left: 1rem; margin-right: 1rem; }
+}
